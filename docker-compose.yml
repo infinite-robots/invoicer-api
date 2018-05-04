@@ -1,7 +1,8 @@
 version: '2'
 services:
     db:
-        image: mysql
+        build: mysql/.
+        image: 'sql'
         container_name: db
         ports:
             - "32000:3306"
@@ -17,6 +18,9 @@ services:
         build: .
         image: python:2.7
         container_name: flask_app
+        stdin_open: true
+        tty: true
+        working_dir: /app
         links:
             - db
         ports:
@@ -25,7 +29,11 @@ services:
             - db
         environment:
             - DATABASE_HOST=db
-        tty: true
+        volumes:
+            - .:/app 
+
+       
+       
        
         
 

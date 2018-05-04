@@ -1,41 +1,37 @@
-#from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, jsonify
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from config import config
-
 import mysql.connector
 
 app = Flask(__name__)
-print "asdf"
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['SQLALCHEMY_DATABASE_URI'] = config['DBURI']
-connection = mysql.connector.connect(user='root', password='root', host='db', database='users')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = config['host']
+connection = mysql.connector.connect(**config)
 
-# db = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
     return 'Good Morning Dave...'
 
-# @app.route('/x/users')
-# def users():
-#     ret = []
-#     for user in User.query.all():
-#         ret.append({
-#             'username': user.username,
-#             'email'   : user.email,
-#             'id'      : user.id,
-#         })
+@app.route('/x/users')
+def users():
+    ret = []
+    for user in User.query.all():
+        ret.append({
+            'username': user.username,
+            'email'   : user.email,
+            'id'      : user.id,
+        })
         
-#     return jsonify(ret)
+    return jsonify(ret)
 
 
-
-
-# SQL Alchemy DB Definitions
-# class User(db.Model):
-#     id       = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(80), unique=True, nullable=False)
-#     email    = db.Column(db.String(120), unique=True, nullable=False)
+#SQL Alchemy DB Definitions
+class User(db.Model):
+    id       = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email    = db.Column(db.String(120), unique=True, nullable=False)
 
 if __name__ == '__main__': 
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
