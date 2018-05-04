@@ -12,6 +12,6 @@ setup(
     ],
     scripts = [
         'bin/invoicer-createdb.py',
-	    'bin/invoicer-populatedb.py'
+	'bin/invoicer-populatedb.py'
     ]
 )
