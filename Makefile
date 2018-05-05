@@ -1,4 +1,12 @@
-.PHONY: clean relclean venv
+.PHONY: clean relclean venv test table populate
+
+tables:
+	@echo "==> Creating Database Tables"
+	@venv/bin/invoicer-createdb.py
+
+populate:
+	@echo "==> Populating Database Tables"
+	@venv/bin/invoicer-populatedb.py
 
 test:
 	@echo "==> Starting dev server"
@@ -6,7 +14,7 @@ test:
 	FLASK_DEBUG=1 \
 	./venv/bin/flask run --host=0.0.0.0
 
-venv:
+venv: relclean
 	@if [ ! -d venv ]; then \
 	  echo "==> Installing virtualenv"; \
 	  virtualenv venv; \
