@@ -6,8 +6,7 @@ import mysql.connector
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = config['host']
-connection = mysql.connector.connect(**config)
-
+#connection = mysql.connector.connect(**config)
 db = SQLAlchemy(app)
 
 @app.route('/')
