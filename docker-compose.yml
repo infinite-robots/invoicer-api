@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 services:
     db:
         build: mysql/.
@@ -11,7 +11,8 @@ services:
             MYSQL_DATABASE: "users"
             MYSQL_USER: "root"
             MYSQL_PASSWORD: "root"
-
+        healthcheck:
+            test: "exit 0"
         volumes:
             - ./db:/docker-entrypoint-initdb.d/:ro
     flask:
@@ -25,12 +26,14 @@ services:
             - db
         ports:
             - "5000:5000"
-        depends_on:
-            - db
         environment:
             - DATABASE_HOST=db
         volumes:
-            - .:/app 
+            - .:/app
+        depends_on:
+            db: 
+                condition: service_healthy
+        restart: unless-stopped 
 
        
        
