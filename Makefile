@@ -1,12 +1,9 @@
-.PHONY: clean relclean venv test table populate
+
+.PHONY: clean relclean venv test table
 
 tables:
 	@echo "==> Creating Database Tables"
 	@venv/bin/invoicer-createdb.py
-
-populate:
-	@echo "==> Populating Database Tables"
-	@venv/bin/invoicer-populatedb.py
 
 test:
 	@echo "==> Starting dev server"

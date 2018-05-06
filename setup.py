@@ -11,7 +11,6 @@ setup(
         'pymysql',
     ],
     scripts = [
-        'bin/invoicer-createdb.py',
-	'bin/invoicer-populatedb.py'
+        'bin/invoicer-createdb.py'
     ]
 )
