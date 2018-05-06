@@ -7,10 +7,17 @@ services:
         ports:
             - "32000:3306"
         environment:
+<<<<<<< HEAD
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: users
             MYSQL_USER: root
             MYSQL_PASSWORD: root
+=======
+            MYSQL_ROOT_PASSWORD: "root"
+            MYSQL_DATABASE: "users"
+            MYSQL_USER: "root"
+            MYSQL_PASSWORD: "root"
+>>>>>>> 581be9169fd93597db0ada33eed121fc71bc710f
         healthcheck:
             test: "exit 0"
         volumes:
