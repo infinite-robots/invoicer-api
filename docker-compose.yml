@@ -7,10 +7,17 @@ services:
         ports:
             - "32000:3306"
         environment:
+<<<<<<< HEAD
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: users
             MYSQL_USER: root
             MYSQL_PASSWORD: root
+=======
+            MYSQL_ROOT_PASSWORD: "root"
+            MYSQL_DATABASE: "users"
+            MYSQL_USER: "root"
+            MYSQL_PASSWORD: "root"
+>>>>>>> 581be91... added health check and restart to flask container config
         healthcheck:
             test: "exit 0"
         volumes:
