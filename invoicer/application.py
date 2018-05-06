@@ -10,8 +10,9 @@ Base = declarative_base()
 app = Flask(__name__)
 metadata = MetaData()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db_uri = 'mysql://root:root@db:3306/users'
+=db_uri = 'mysql://root:root@db:3306/users'
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+
 db = SQLAlchemy(app)
 
 # engine = create_engine('postgres://%s:%s@%s:%s/%s' % (user, pwd, host, port, db))
