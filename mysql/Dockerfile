@@ -7,4 +7,3 @@ ENV MYSQL_PASSWORD root
 
 EXPOSE 3306
 CMD ["mysqld"]
-

@@ -38,7 +38,6 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-db.create_all()
-if __name__ == '__main__': 
+if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
 
