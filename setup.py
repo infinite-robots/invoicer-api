@@ -6,6 +6,8 @@ setup(
     packages = ['invoicer'],
     include_package_data = True,
     install_requires = [
+        'SQLAlchemy',
+        'mysqlclient',
         'flask',
         'flask_sqlalchemy',
         'pymysql',
