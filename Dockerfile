@@ -16,7 +16,6 @@ COPY . /bin
 
 RUN pip install -r requirements.txt
 WORKDIR /invoicer
-RUN pip install flask-sqlalchemy
 ENTRYPOINT ["python"]
 CMD ["bin/invoicer-populatedb.py"]
 CMD ["invoicer/application.py"]
