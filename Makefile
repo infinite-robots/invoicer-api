@@ -1,4 +1,10 @@
-.PHONY: clean relclean venv test table populate
+.PHONY: clean relclean venv test table populate docker
+
+docker:
+	@echo "==> Running docker-compose build"
+	docker-compose build
+	@echo "==> Running docker-compose up"
+	docker-compose up
 
 tables:
 	@echo "==> Creating Database Tables"
