@@ -1,6 +1,7 @@
 .PHONY: clean relclean venv test table populate docker
 
 docker:
+	@docker rm flask_app db
 	@echo "==> Running docker-compose build"
 	docker-compose build
 	@echo "==> Running docker-compose up"
