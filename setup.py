@@ -6,14 +6,9 @@ setup(
     packages = ['invoicer'],
     include_package_data = True,
     install_requires = [
-        'SQLAlchemy',
         'mysqlclient',
         'flask',
         'flask_sqlalchemy',
-        'pymysql',
+        'Flask-Migrate'
     ],
-    scripts = [
-        'bin/invoicer-createdb.py',
-	'bin/invoicer-populatedb.py'
-    ]
 )
