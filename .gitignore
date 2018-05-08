@@ -1,2 +1,3 @@
 invoicer_api.egg-info
 venv/
+*.pyc
