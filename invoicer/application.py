@@ -23,14 +23,32 @@ def users():
             'id'      : user.id,
         })
     
-    return jsonify(ret)
+    return json_resp(True, ret)
 
 class User(db.Model):
     id       = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
     email    = db.Column(db.String(120), unique=True)
 
+
+#########################
+## HELPERS
+
+def json_resp(succ, ret={}, msg=''):
+    return jsonify({
+        'SUCCESS': succ,
+        'MESSAGE': msg,
+        'PAYLOAD': ret
+    })
+
+
+#########################
+## DEV SERVER
+#    - db migrations need to be handled
+#    - dev server should be started via command line
+    
 if __name__ == '__main__':
+    # terrible hot fix for db migrations while docker is figured out
     try:
         User.query.all()
     except:
