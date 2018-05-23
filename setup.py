@@ -9,6 +9,9 @@ setup(
         'mysqlclient',
         'flask',
         'flask_sqlalchemy',
-        'Flask-Migrate'
+        'Flask-Migrate',
+        'python-jose',
+        'flask-cors',
+        'six', 'requests'
     ],
 )
