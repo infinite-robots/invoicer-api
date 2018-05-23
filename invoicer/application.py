@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from config import config
+import auth, requests
 
 app = Flask(__name__)
 
@@ -24,6 +25,21 @@ def users():
         })
     
     return json_resp(True, ret)
+
+
+@app.route('/x/userinfo')
+@auth.requires_auth
+def user_info():
+    auth = request.headers.get("Authorization", None)
+
+    ret = requests.get(
+        'https://%s/userinfo'% (config['AUTH0'],),
+        headers={'Authorization':auth}
+    )
+
+    return json_resp(True, {
+        'user' : ret.json()
+    })
 
 class User(db.Model):
     id       = db.Column(db.Integer, primary_key=True)
